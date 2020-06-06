@@ -1,0 +1,24 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+            {{library_id}} {{current_user}}<br>
+
+			<form name="form" action="{% url 'submitrev'  %}" method="POST" >{% csrf_token %} 
+                <input type="text" placeholder="address" name="address" />
+                                  <br> <br>
+             <input type="text"  style="marginleft:20%;"  placeholder="review" />
+                <br> <br>
+                <button  type="submit" value="submit" width=100%><strong>submit</strong></button>
+                </form> 
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
