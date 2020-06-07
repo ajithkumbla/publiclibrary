@@ -12,7 +12,7 @@
               <!-- Blog Entries Column -->
                     <div class="col-md-6 mt-3 left">
                     {% for post in post_list %}  
-                        {% if post.library.id|cut:" " == library_id|cut:" " %}
+                        {% if post.library.id|cut:" " == library_id|cut:" " and post.status|cut:" " == "1" %}
                         <div class="card mb-4" >
                         <div class="card-body">
                             <h2 class="card-title">{{ post.title }}</h2>

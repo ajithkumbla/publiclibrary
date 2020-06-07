@@ -64,12 +64,12 @@ def submit_post(request):
 		if data.is_valid():
 			title = data.cleaned_data['title']
 			content = data.cleaned_data['content']
-			library = data.cleaned_data['library']
+			lib = data.cleaned_data['library']
 			author = request.user
-			instance = Post.save(commit=false)
-			instance.library=library
-			values = Post(library=library,author=author, title=title,content=content)
-			values.save()
-			return HttpResponse("success")
+			library = Library.objects.get(id=lib)
+			value = Post(title=title,content=content,author=author,library= library)
+			value.save()
+			messages.success(request, 'comment submitted ')
+			return redirect('home')
 	
 			
