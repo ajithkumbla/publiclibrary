@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import  CreateUserForm
+from .forms import PostForm
 
 def registerPage(request):
 	if request.user.is_authenticated:
@@ -19,10 +20,7 @@ def registerPage(request):
 				form.save()
 				user = form.cleaned_data.get('username')
 				messages.success(request, 'Account was created for ' + user)
-
 				return redirect('login')
-			
-
 		context = {'form':form}
 		return render(request, 'accounts/register.html', context)
 
@@ -33,15 +31,12 @@ def loginPage(request):
 		if request.method == 'POST':
 			username = request.POST.get('username')
 			password =request.POST.get('password')
-
 			user = authenticate(request, username=username, password=password)
-
 			if user is not None:
 				login(request, user)
 				return redirect('home')
 			else:
 				messages.info(request, 'Username OR password is incorrect')
-
 		context = {}
 		return render(request, 'accounts/login.html', context)
 
@@ -62,11 +57,17 @@ def review(request,pk):
 	context={'library_id':library_id,'current_user':current_user,'post_list':post_list}
 	return render(request, 'accounts/review.html',context)
 
-# @login_required(login_url='login')
-def submitrev(request):
-	a=User.objects.all()
-	stri=" "
-	for user in a:
-		print (user)
-		# stri=stri+user+" "
-	return HttpResponse("helllo")
+@login_required(login_url='login')
+def submit_post(request):
+	if request.method == 'POST':
+		data = PostForm(request.POST)
+		if data.is_valid():
+			title = data.cleaned_data['title']
+			content = data.cleaned_data['content']
+			library = data.cleaned_data['library']
+			author =request.user
+			values = Post(library=library,author=author, title=title,content=content)
+			values.save()
+			return HttpResponse("success")
+	
+			
