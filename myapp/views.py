@@ -65,7 +65,9 @@ def submit_post(request):
 			title = data.cleaned_data['title']
 			content = data.cleaned_data['content']
 			library = data.cleaned_data['library']
-			author =request.user
+			author = request.user
+			instance = Post.save(commit=false)
+			instance.library=library
 			values = Post(library=library,author=author, title=title,content=content)
 			values.save()
 			return HttpResponse("success")

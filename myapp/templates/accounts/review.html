@@ -38,7 +38,7 @@
                 <div class="row">
                     {% for post in post_list %}  
                         {% if post.library.id|cut:" " == library_id|cut:" " %}
-                        <input type="hidden" name="library" value="{{ post.library }}">
+                        <input type="hidden" name="library" value="{{ post.library.id }}">
                         {% endif %}
                     {% endfor %}
                         <strong><label for="title">title:  </label></strong>&nbsp&nbsp
