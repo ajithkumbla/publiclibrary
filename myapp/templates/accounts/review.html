@@ -1,21 +1,26 @@
 {%  extends 'accounts/main.html' %}
 {% load static %}
 {% block content %}
-
-
+<br>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-12">
 		<div class="card card-body">
-            {{library_id}} {{current_user}}<br>
-
-			<form name="form" action="{% url 'submitrev'  %}" method="POST" >{% csrf_token %} 
-                <input type="text" placeholder="address" name="address" />
-                                  <br> <br>
-             <input type="text"  style="marginleft:20%;"  placeholder="review" />
-                <br> <br>
-                <button  type="submit" value="submit" width=100%><strong>submit</strong></button>
-                </form> 
-
+            <h2>Reviews</h2>
+             <br>
+            <div class="container">
+                <div class="row">
+              <!-- Blog Entries Column -->
+                    <div class="col-md-8 mt-3 left">
+                    {% for post in post_list %}  
+                        <div class="card mb-4" >
+                        <div class="card-body">
+                            <h2 class="card-title">{{ post.title }}</h2>
+                            <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
+                            <p class="card-text">{{post.content }}</p>
+                        </div>
+                        </div>    
+                     {% endfor %}
+                </div>
 		</div>
 	</div>
 </div>

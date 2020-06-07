@@ -5,3 +5,4 @@ from .models import *
 
 
 admin.site.register(Library)
+admin.site.register(Post)

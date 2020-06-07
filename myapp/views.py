@@ -2,16 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
-
 from django.contrib.auth import authenticate, login, logout
-
 from django.contrib import messages
-
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
 from .models import *
 from .forms import  CreateUserForm
+
 def registerPage(request):
 	if request.user.is_authenticated:
 		return redirect('home')
@@ -58,14 +54,19 @@ def home(request):
 	library = Library.objects.all()
 	return render(request, 'accounts/dashboard.html',{'library':library})
 
-# @login_required(login_url='login')
+@login_required(login_url='login')
 def review(request,pk):
+	post_list=Post.objects.all()
 	library_id=pk
 	current_user = request.user
-	context={'library_id':library_id,'current_user':current_user}
-	# return HttpResponse(library_id)
+	context={'library_id':library_id,'current_user':current_user,'post_list':post_list}
 	return render(request, 'accounts/review.html',context)
 
 # @login_required(login_url='login')
 def submitrev(request):
-	return HttpResponse("hello")
+	a=User.objects.all()
+	stri=" "
+	for user in a:
+		print (user)
+		# stri=stri+user+" "
+	return HttpResponse("helllo")

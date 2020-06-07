@@ -9,5 +9,4 @@ urlpatterns = [
 	path('review/<str:pk>/', views.review, name="review"),
 	path('submitrev/',views.submitrev, name="submitrev"),
     path('', views.home, name="home"),
-
 ]
