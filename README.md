@@ -47,7 +47,7 @@ user can login to the if user name and password is taken else can register as ne
 
 guest user can check list of libraries and also reviews.
 
-# creating super in django
+# creating superuser in django
 
 python3 manage.py createsuperuser
 
