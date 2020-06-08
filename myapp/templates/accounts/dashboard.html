@@ -4,7 +4,11 @@
 
 
 <br>
-
+{% for message in messages %}  
+    <div class="alert alert-success">
+      <strong><p id="messages">{{message}}</p></strong>
+    </div>
+{% endfor %}
 <div class="row">
 	<div class="col-md-12">
 	

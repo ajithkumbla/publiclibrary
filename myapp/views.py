@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import  CreateUserForm
 from .forms import PostForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def registerPage(request):
 	if request.user.is_authenticated:
@@ -71,5 +73,11 @@ def submit_post(request):
 			value.save()
 			messages.success(request, 'comment submitted ')
 			return redirect('home')
+
+def adminlog(request):
+	return HttpResponseRedirect(reverse('admin:index'))
+
+
+
 	
 			
