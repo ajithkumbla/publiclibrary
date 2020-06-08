@@ -51,7 +51,7 @@ def home(request):
 	library = Library.objects.all()
 	return render(request, 'accounts/dashboard.html',{'library':library})
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def review(request,pk):
 	post_list=Post.objects.all()
 	library_id=pk
@@ -77,6 +77,11 @@ def submit_post(request):
 def adminlog(request):
 	return HttpResponseRedirect(reverse('admin:index'))
 
+def guestlog(request,pk):
+	library = Library.objects.all()
+	guest=pk
+	return render(request, 'accounts/dashboard.html',{'library':library,'guest':guest})
+	
 
 
 	

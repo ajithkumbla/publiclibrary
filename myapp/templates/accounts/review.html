@@ -2,8 +2,7 @@
 {% load static %}
 {% block content %}
 <br>
-
-<div class="row">
+<div class="">
 	<div class="col-md-12">
 		<div class="card card-body">
             <h2>Reviews</h2>
@@ -28,6 +27,7 @@
 	</div>
 </div>
 <hr>
+{% if current_user|slugify != "anonymoususer" %}
 <div class="row navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="col-md-12" style="color:navy;background-color:steelblue;">
 		<div class="card card-body">
@@ -52,4 +52,5 @@
 		</div>
 	</div>
 </div>
+{% endif%}
 {% endblock %}
