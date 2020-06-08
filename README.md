@@ -45,7 +45,7 @@ admins can login to the system by entering username and password and can add new
 
 user can login to the if the user name and password is taken else can register as new user by providing neccessary details.They can view the libraries which are added by the admin and can send reviews of the library
 
-guest user can check list of libraries and also reviews.
+guest user or public user can check list of libraries and also reviews.
 
 # creating superuser in django
 
