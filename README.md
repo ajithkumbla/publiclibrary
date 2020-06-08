@@ -43,7 +43,7 @@ development server
 
 admins can login to the system by entering username and password and can add new libraries by providing name,address and the location of the library.they also can publish the reviews provided by the user by approving it.
 
-user can login to the if user name and password is taken else can register as new user by providing neccessary details.They can view the libraries those are added by the admin and can send reviews of the library
+user can login to the if the user name and password is taken else can register as new user by providing neccessary details.They can view the libraries which are added by the admin and can send reviews of the library
 
 guest user can check list of libraries and also reviews.
 
